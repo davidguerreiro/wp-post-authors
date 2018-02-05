@@ -131,7 +131,7 @@ class Posts_Authors {
 
       /**
        * Switch author's posts
-       * 
+       * TODO: Complete this method.
        * @return void
        */
       public static function switch_author_posts() {
