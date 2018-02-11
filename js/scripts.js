@@ -1,6 +1,13 @@
 ( function( $ ){
     $(document).ready(function(){
 
+        // send request to change auhtor's posts
+        $('#switch-form').submit(function(event){
+            console.log(event);
+            console.log('submit');
+            event.preventDefault();
+        });
+
         // change old author image.
         $('.author__selector').change(function(){
             var image_id = $(this).data('image');
@@ -25,5 +32,6 @@
                 }
             });
         });
+
     });
 }(jQuery));

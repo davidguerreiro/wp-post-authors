@@ -33,7 +33,7 @@
     </h2>
  </header>
 <section class="plugin-section">
-    <form action="" method="post" class="plugin-main-form">
+    <form action="" method="post" class="plugin-main-form" id="switch-form">
         <input type="hidden" name="wpa-form" value="main-form">
         <input type="hidden" name="nonce" value="<?php echo $nonce; ?>">
 

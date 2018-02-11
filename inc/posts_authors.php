@@ -79,7 +79,7 @@ class Posts_Authors {
         $css_url    = plugins_url( '/css/style.css', dirname( __FILE__ ) );
         $js_url     = plugins_url( '/js/scripts.js', dirname( __FILE__ ) );
         wp_enqueue_style( 'pa-main-css', $css_url, array(), '1.0', 'all' );
-        wp_enqueue_script( 'pa-main-js', $js_url, array( 'jquery' ), true );
+        wp_enqueue_script( 'pa-main-js', $js_url, array( 'jquery' ), '1.1', true );
       }
 
       /**
@@ -133,7 +133,7 @@ class Posts_Authors {
 
       /**
        * Switch author's posts
-       * TODO: Complete this method.
+       *
        * @return void
        */
       public static function switch_author_posts() {
