@@ -33,9 +33,11 @@ class Posts_Authors {
 
         add_action( 'admin_enqueue_scripts', array( self::$shortname, 'enqueue_scripts' ) );
 
+        // change author image dinamically when selected.
         add_action( 'wp_ajax_get_user_gravatar', array( self::$shortname, 'get_gravatar_by_ajax' ) );
-        add_action( 'wp_ajax_nopriv_get_user_gravatar', array( self::$shortname, 'get_gravatar_by_ajax' ) );
 
+        // move posts from original author to new author.
+        add_action( 'wp_ajax_set_new_author', array( self::$shortname, 'switch_author_posts' ) );
      }
 
      /**
@@ -135,6 +137,7 @@ class Posts_Authors {
        * @return void
        */
       public static function switch_author_posts() {
+          global $post;
           $data = array(
               'status' => false,
           );
@@ -143,6 +146,33 @@ class Posts_Authors {
               $data['error'] = 'No data has been provided';
               self::return_response( $data ); 
           }
-   
+
+          if ( empty( $_REQUEST['post-types'] ) ) {
+              $data['error'] = 'Minimun one post type is required';
+              self::return_response( $data );
+          }
+
+          $current_aut_id = (int) $_REQUEST['author-old'];
+          $new_aut_id     = (int) $_REQUEST['author-new'];
+
+          $args = array(
+              'posts_per_page'  => -1,
+              'author'          => $current_aut_id,
+              'post_type'       => $_REQUEST['post-types'],
+          );
+          $posts = get_posts( $args );
+          
+          foreach ( $posts as $the_post ) {
+              setup_postdata( $the_post );
+
+              $args = array(
+                'ID'            => get_the_ID(),
+                'post_author'   => $new_aut_id,
+              );
+              wp_update_post( $args );
+          }
+          wp_reset_postdata();
+          $data['status'] = true;
+          self::return_response( $data );
       }
 }
