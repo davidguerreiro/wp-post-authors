@@ -1,17 +1,36 @@
 ( function( $ ){
     $(document).ready(function(){
 
-        // send request to change auhtor's posts
+        // send request to change auhtor's posts.
         $('#switch-form').submit(function(event){
-            console.log(event);
-            console.log('submit');
             event.preventDefault();
+            // TODO : Validate fields here.
+
+            var form_data = $(this).serialize();
+
+            $.ajax({
+                url : $(this).data('ajax'),
+                type : 'post',
+                dataType : 'json',
+                data : {
+                    action : 'set_new_author',
+                    data : form_data,
+                },
+                success : function( response ) {
+                    console.log( 1 );
+                    console.log( response );
+                },
+                error : function( response ) {
+                    console.log( 1 );
+                    console.log( response );
+                }
+            });
         });
 
         // change old author image.
         $('.author__selector').change(function(){
-            var image_id = $(this).data('image');
-            var $image = $('#' + image_id);
+            var image_id    = $(this).data('image');
+            var $image      = $('#' + image_id);
 
             $image.fadeTo("fast", 0.5 );
 

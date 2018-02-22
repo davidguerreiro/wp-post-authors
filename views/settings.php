@@ -33,9 +33,10 @@
     </h2>
  </header>
 <section class="plugin-section">
-    <form action="" method="post" class="plugin-main-form" id="switch-form">
+    <form action="" method="post" class="plugin-main-form" id="switch-form" data-ajax="<?php echo $ajax_url; ?>">
         <input type="hidden" name="wpa-form" value="main-form">
         <input type="hidden" name="nonce" value="<?php echo $nonce; ?>">
+        
 
         <div class="form__section">
             <h3>
@@ -45,7 +46,7 @@
             <div class="form__input-section">
                 <label for="author-old" class="author__label">Author to be replaced :</label>
                 <img src="<?php echo esc_url( $author_img_url ); ?>" alt="" id="current-author" class="author__image">
-                <select name="author-old" class="author__selector" data-image="current-author" data-ajax="<?php echo admin_url( 'admin-ajax.php' ); ?>">
+                <select name="author-old" class="author__selector" data-image="current-author" data-ajax="<?php echo $ajax_url ?>">
                     <?php foreach ( $users as $user ) : ?>
                         <option value="<?php echo $user->ID; ?>">
                             <?php echo $user->data->user_nicename; ?>
@@ -57,7 +58,7 @@
             <div class="form__input-section">
                 <label for="author-new" class="author__label">New author :</label>
                 <img src="<?php echo esc_url( $author_img_url ); ?>" alt="" id="new-author" class="author__image">
-                <select name="author-new" class="author__selector" data-image="new-author" data-ajax="<?php echo admin_url( 'admin-ajax.php' ); ?>">
+                <select name="author-new" class="author__selector" data-image="new-author" data-ajax="<?php echo $ajax_url ?>">
                     <?php foreach ( $users as $user ) : ?>
                         <option value="<?php echo $user->ID; ?>">
                             <?php echo $user->data->user_nicename; ?>
