@@ -142,6 +142,11 @@ class Posts_Authors {
               'status' => false,
           );
 
+          $params = array();
+          //parse_str( $_POST['data'], $params );
+          echo json_encode( var_dump( $_POST['data'] ) );
+          exit;
+            
           if ( ! isset( $_REQUEST['author-new'] ) || ! isset( $_REQUEST['author-old'] ) || ! isset( $_REQUEST['post-types'] ) ) {
               $data['error'] = 'No data has been provided';
               self::return_response( $data ); 

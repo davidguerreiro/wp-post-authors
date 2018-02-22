@@ -6,22 +6,25 @@
             event.preventDefault();
             // TODO : Validate fields here.
 
-            var form_data = $(this).serialize();
+            var form_data   = $(this).serializeArray();
+            var ajax_url    = $(this).data('ajax'); 
+            console.log( form_data );
+            console.log( ajax_url );
 
             $.ajax({
-                url : $(this).data('ajax'),
-                type : 'post',
-                dataType : 'json',
-                data : {
-                    action : 'set_new_author',
-                    data : form_data,
+                url: ajax_url,
+                type: 'post',
+                //dataType: 'json',
+                data: {
+                    action: 'set_new_author',
+                    data: form_data,
                 },
-                success : function( response ) {
+                success: function( response ) {
                     console.log( 1 );
                     console.log( response );
                 },
-                error : function( response ) {
-                    console.log( 1 );
+                error: function( response ) {
+                    console.log( 2 );
                     console.log( response );
                 }
             });
