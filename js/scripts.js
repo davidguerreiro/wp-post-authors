@@ -28,7 +28,8 @@
                     console.log( 1 );
                     console.log( response );
                     
-                    $notification.html( response.notification );
+                    var notification = ( response.status == false ) ? "<span class='error'>Error :</span> " + response.notification : response.notification; 
+                    $notification.html( notification );
                     $button.attr( 'value', 'Switch Author Posts' );
                     $loader.fadeOut('fast', 'linear', function() {
                         $notification.slideDown('fast');
@@ -38,7 +39,7 @@
                     console.log( 2 );
                     console.log( response );
 
-                    $notification.html( "There is an unexpected error on the server. Please try again." );
+                    $notification.html( "<span class='error'>Error : </span>There is an unexpected error on the server. Please try again." );
                     $button.attr( 'value', 'Switch Author Posts' );
                     $loader.fadeOut('fast', 'linear', function() {
                         $notification.slideDown('fast');

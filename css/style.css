@@ -98,11 +98,10 @@
     font-weight: bolder;
 }
 
-/*
 .form-section__notification .error{
-    color: 
+    color: #cc0f0f;
 }
-*/
+
 #loader {
     display: none;
 }
