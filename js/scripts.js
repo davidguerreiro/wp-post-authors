@@ -8,13 +8,11 @@
 
             var form_data   = $(this).serializeArray();
             var ajax_url    = $(this).data('ajax'); 
-            console.log( form_data );
-            console.log( ajax_url );
 
             $.ajax({
                 url: ajax_url,
                 type: 'post',
-                //dataType: 'json',
+                dataType: 'json',
                 data: {
                     action: 'set_new_author',
                     data: form_data,

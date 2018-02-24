@@ -142,42 +142,67 @@ class Posts_Authors {
               'status' => false,
           );
 
-          $params = array();
-          //parse_str( $_POST['data'], $params );
-          echo json_encode( var_dump( $_POST['data'] ) );
-          exit;
-            
-          if ( ! isset( $_REQUEST['author-new'] ) || ! isset( $_REQUEST['author-old'] ) || ! isset( $_REQUEST['post-types'] ) ) {
-              $data['error'] = 'No data has been provided';
-              self::return_response( $data ); 
-          }
-
-          if ( empty( $_REQUEST['post-types'] ) ) {
-              $data['error'] = 'Minimun one post type is required';
+          // data sent by ajax comes from  HTTP POST - variable name : $data.$_COOKIE
+          if ( ! isset( $_POST['data'] ) ) {
+              $data['notification'] = "There is an error in the server, please try again";
               self::return_response( $data );
           }
 
-          $current_aut_id = (int) $_REQUEST['author-old'];
-          $new_aut_id     = (int) $_REQUEST['author-new'];
+          // get all params.
+          $params       = array();
+          $post_types   = array();
+          foreach ( $_POST['data'] as $array_data ) {
+            // post types have to be saved in a separate array.
+            if ( $array_data['name'] == 'post-type[]' ) {
+                $post_types[] = $array_data['value'];
+            } else {
+                $params[ $array_data['name'] ] = $array_data['value'];
+            }
+          }
+          // parse_str( $_POST['data'], $params );
+          // echo json_encode( var_dump( $params ) );
+          // exit;
+            
+          if ( ! isset( $params['author-new'] ) || ! isset( $params['author-old'] ) || ! isset( $params['nonce'] ) ) {
+              $data['notification'] = 'No data has been provided';
+              self::return_response( $data ); 
+          }
+
+          if ( empty( $params['nonce'] ) || ! wp_verify_nonce( $params['nonce'], 'wpa' ) ) {
+              $data['notification'] = 'Invalid nonce';
+              self::return_response( $data );
+          }
+
+          if ( empty( $post_types ) ) {
+              $data['notification'] = 'Minimun one post type is required';
+              self::return_response( $data );
+          }
+
+          $current_aut_id = (int) $params['author-old'];
+          $new_aut_id     = (int) $params['author-new'];
+
+          if ( $current_aut_id === $new_aut_id ) {
+            $data['notification'] = 'You cannot transfer posts to the same author';
+            self::return_reponse( $data );
+          }
 
           $args = array(
               'posts_per_page'  => -1,
               'author'          => $current_aut_id,
-              'post_type'       => $_REQUEST['post-types'],
+              'post_type'       => $post_types,
           );
           $posts = get_posts( $args );
           
           foreach ( $posts as $the_post ) {
-              setup_postdata( $the_post );
-
               $args = array(
-                'ID'            => get_the_ID(),
+                'ID'            => $the_post->ID,
                 'post_author'   => $new_aut_id,
               );
               wp_update_post( $args );
           }
-          wp_reset_postdata();
+
           $data['status'] = true;
+          $data['notification'] = 'Posts have been successfully transfered. Have fun !!';
           self::return_response( $data );
       }
 }
