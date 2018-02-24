@@ -183,7 +183,7 @@ class Posts_Authors {
 
           if ( $current_aut_id === $new_aut_id ) {
             $data['notification'] = 'You cannot transfer posts to the same author';
-            self::return_reponse( $data );
+            self::return_response( $data );
           }
 
           $args = array(

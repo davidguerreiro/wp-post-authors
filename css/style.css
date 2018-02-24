@@ -93,5 +93,19 @@
     background-color: #A535FF;
 }
 
+.form-section__notification {
+    display: none;
+    font-weight: bolder;
+}
+
+/*
+.form-section__notification .error{
+    color: 
+}
+*/
+#loader {
+    display: none;
+}
+
 
 
