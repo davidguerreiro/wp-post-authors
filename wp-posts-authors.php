@@ -32,12 +32,6 @@ if ( ! function_exists( 'add_action' ) ) {
     exit();
 }
 
-/*
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-*/
-
 define( 'AUTHORS_VERSION', '1.0' );
 define( 'AUTHORS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 

@@ -116,8 +116,7 @@ class Posts_Authors {
           if ( isset( $_POST['user_id'] ) && ! empty( $_POST['user_id'] ) ) {
             $data = self::get_author_image( intval( $_POST['user_id']), true );
           }
-          echo json_encode( $data );
-          exit;
+          self::return_response( $data );
       } 
 
       /**
@@ -159,9 +158,6 @@ class Posts_Authors {
                 $params[ $array_data['name'] ] = $array_data['value'];
             }
           }
-          // parse_str( $_POST['data'], $params );
-          // echo json_encode( var_dump( $params ) );
-          // exit;
             
           if ( ! isset( $params['author-new'] ) || ! isset( $params['author-old'] ) || ! isset( $params['nonce'] ) ) {
               $data['notification'] = 'No data has been provided';
