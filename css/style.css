@@ -14,7 +14,7 @@
 }
 
 .plugin-main-form {
-    padding: 25px 25px 40px 25px;
+    padding: 25px 25px 40px 30px;
 }
 
 .form__section {
@@ -29,6 +29,10 @@
 .form__input-section {
     width: 47%;
     display: inline-block;
+}
+
+.form__input-section--right {
+    padding-left: 40px;
 }
 
 .author__label {
@@ -54,7 +58,7 @@
 }
 
 .plugin-footer__text {
-    padding: 17px;
+    padding: 20px;
     font-size: 15px;
     color: #6E869C;
     font-style: italic;
@@ -104,6 +108,10 @@
 
 #loader {
     display: none;
+}
+
+.plugin-section__notice {
+    padding: 25px;
 }
 
 

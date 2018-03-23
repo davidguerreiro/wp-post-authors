@@ -53,7 +53,7 @@
                 </select>
             </div>
             <!-- New author section -->
-            <div class="form__input-section">
+            <div class="form__input-section form__input-section--right">
                 <label for="author-new" class="author__label">New author :</label>
                 <img src="<?php echo esc_url( $author_img_url ); ?>" alt="" id="new-author" class="author__image">
                 <select name="author-new" class="author__selector" data-image="new-author" data-ajax="<?php echo admin_url( 'admin-ajax.php' ); ?>">
@@ -129,6 +129,12 @@
         </div>
 
     </form>
+</section>
+<section class="plugin-section">
+    <p class="plugin-section__notice">
+        <b>Notice : </b> This plugin will move from 1000 to 1.500 posts depending of your server configuration and capacity. If you get an error message after moving the posts,
+        just click on "Switch Author Posts" button again and the plugin will continue moving the posts.
+    </p>
 </section>
 <footer class="plugin-section">
     <p class="plugin-footer__text">

@@ -7,9 +7,10 @@
  * Author: David Guerreiro ( 93Digital )
  * Author URI: https://github.com/davidguerreiro
  * License: GPL2
+ *
  */
 
- /*
+/*
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
 as published by the Free Software Foundation; either version 2

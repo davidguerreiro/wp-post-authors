@@ -48,8 +48,8 @@ class Posts_Authors {
       */
       public static function add_menu_page_option() {
         add_menu_page(
-            'WP Posts Author',
-            'WP Posts Author',
+            'WP Switch Author',
+            'WP Switch Author',
             'administrator',
             'wp-posts-authors',
             array( self::$shortname, 'display_main_page' ),
