@@ -25,8 +25,6 @@
                     data: form_data,
                 },
                 success: function( response ) {
-                    console.log( 1 );
-                    console.log( response );
                     
                     var notification = ( response.status == false ) ? "<span class='error'>Error :</span> " + response.notification : response.notification; 
                     $notification.html( notification );
@@ -36,8 +34,6 @@
                     });
                 },
                 error: function( response ) {
-                    console.log( 2 );
-                    console.log( response );
 
                     $notification.html( "<span class='error'>Error : </span>There is an unexpected error on the server. Please try again." );
                     $button.attr( 'value', 'Switch Author Posts' );

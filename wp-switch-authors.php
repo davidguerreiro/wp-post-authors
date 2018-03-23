@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: WP Posts Authors
+ * Plugin Name: WP Switch Authors
  * Plugin URI: https://93digital.co.uk
  * Description: This plugin allows admins to change post types authors massively choosing which author will be replaced.
  * Version: 1.0.0
