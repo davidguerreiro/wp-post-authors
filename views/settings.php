@@ -28,7 +28,7 @@
 
  <header class="plugin-section">
     <h2 class="plugin-section__title">
-        <?php _e( 'WP Switch Authors', $trans_key ); ?>
+        <?php _e( 'Transfer Authors', $trans_key ); ?>
     </h2>
  </header>
 <section class="plugin-section">
