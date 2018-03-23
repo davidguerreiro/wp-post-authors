@@ -14,7 +14,7 @@
 }
 
 .plugin-main-form {
-    padding: 25px 25px 40px 30px;
+    padding: 25px 25px 27px 30px;
 }
 
 .form__section {
@@ -100,6 +100,7 @@
 .form-section__notification {
     display: none;
     font-weight: bolder;
+    padding-top: 15px;
 }
 
 .form-section__notification .error{
