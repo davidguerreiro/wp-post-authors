@@ -30,7 +30,7 @@ re-assign authors to the new imported posts.
 posts to those new imported users.
 
 3. If you are a developer and you need to re-assign all those pages you created to
-your client admin user
+your client admin user.
 
 == Installation ==
 
